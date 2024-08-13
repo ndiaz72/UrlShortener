@@ -1,0 +1,145 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "URL Shortener API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Get all URLs",
+                "operationId": "3aa647680cab426a830ee3ec8ad222f7",
+                "responses": {
+                    "200": {
+                        "description": "A list of URLs",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Http\\Resources\\Url"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create": {
+            "get": {
+                "summary": "Show the form to create a new URL",
+                "operationId": "b19f62f11d5660c52c7ea6a1380dfa50",
+                "responses": {
+                    "200": {
+                        "description": "View for creating a URL"
+                    }
+                }
+            }
+        },
+        "/shorten": {
+            "post": {
+                "summary": "Create a new shortened URL",
+                "operationId": "de00080422ce5b97774d0e3d02a22dbc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "original_url"
+                                ],
+                                "properties": {
+                                    "original_url": {
+                                        "type": "string",
+                                        "example": "http://example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "URL successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "shortened_url": {
+                                            "type": "string",
+                                            "example": "abc123"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid URL format",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "URL already exist!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{shortened}": {
+            "get": {
+                "summary": "Get the original URL by shortened URL",
+                "operationId": "93ef7302dc0fc6b42084c72b85832bef",
+                "parameters": [
+                    {
+                        "name": "shortened",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Redirects to the original URL"
+                    },
+                    "404": {
+                        "description": "Shortened URL not found"
+                    }
+                }
+            }
+        },
+        "/urls/{id}": {
+            "delete": {
+                "summary": "Delete a URL",
+                "operationId": "95f6716cf4aadcef7f043217e1d9ab41",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "URL successfully deleted"
+                    },
+                    "404": {
+                        "description": "URL not found"
+                    }
+                }
+            }
+        }
+    }
+}

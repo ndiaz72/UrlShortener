@@ -46,25 +46,9 @@ npm install
 
 ### Configuration
 Environment File
-Create a copy of the .env.example file and name it .env. Update the following environment variables:
+Create a copy of the .env.example file and name it .env. Update the environment variables
 
-.env
-
-APP_NAME=URL Shortener
-APP_ENV=local
-APP_KEY=base64:your-app-key
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=your_database
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-
-# Other configuration variables...
-Generate the application key:
+# Generate the application key:
 
 ```bash
 php artisan key:generate
@@ -84,5 +68,3 @@ Start the Laravel Development Server
 ```bash
 php artisan serve
 ```
-
-The Laravel application will be available at http://localhost:8000.

@@ -1,103 +1,88 @@
-URL Shortener Application
-A simple URL shortener application built with Laravel.
+# URL Shortener Application
 
-Table of Contents
-Prerequisites
-Installation
-Configuration
-Running the Application
-Database Migration and Seeding
-Deployment
-License
-Prerequisites
-PHP: 8.0 or higher
-Composer: PHP dependency manager
-MySQL or another supported database
-Installation
-Clone the Repository
+This repository contains a URL shortener application built with Laravel and React.js. The application allows users to shorten long URLs and manage them easily.
 
-bash
-Copiar código
-git clone https://github.com/ndiaz72/UrlShortener.git
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
+4. [Running the Application](#running-the-application)
+5. [Running Tests](#running-tests)
+6. [Deployment](#deployment)
+7. [CI/CD](#cicd)
+8. [License](#license)
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **PHP**: 8.0 or higher
+- **Composer**: Dependency Manager for PHP
+- **Node.js**: 14.x or higher
+- **NPM**: Node Package Manager
+- **MySQL**: Version 5.7 or higher (or another supported database)
+- **Git**: Version control system
+
+## Installation
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/ndiaz72/UrlShortener
 cd your-repository
-Install PHP Dependencies
+```
 
-bash
-Copiar código
+### Install PHP Dependencies
+
+```bash
 composer install
-Install JavaScript Dependencies (if any)
+```
 
-bash
-Copiar código
+### Install JavaScript Dependencies
+```bash
 npm install
-Configuration
-Copy and Edit the Environment File
+```
 
-bash
-Copiar código
-cp .env.example .env
-Update the .env file with your database and application settings.
+### Configuration
+Environment File
+Create a copy of the .env.example file and name it .env. Update the following environment variables:
 
-Generate Application Key
+.env
 
-bash
-Copiar código
+APP_NAME=URL Shortener
+APP_ENV=local
+APP_KEY=base64:your-app-key
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+# Other configuration variables...
+Generate the application key:
+
+```bash
 php artisan key:generate
-Database Migration and Seeding
-Run Migrations
+```
 
-To create the necessary database tables:
+# Database Migration
+Run the database migrations:
 
-bash
-Copiar código
+```bash
 php artisan migrate
+```
 
-Run the Seeder
-
-To populate the database with the sample data:
-
-bash
-Copiar código
-php artisan db:seed --class=UrlSeeder
-Deployment
-Upload Files to Your Server
-
-Install Dependencies on the Server
-
-bash
-Copiar código
-composer install --no-dev
-Run Migrations
-
-bash
-Copiar código
-php artisan migrate --force
-Seed the Database
-
-bash
-Copiar código
-php artisan db:seed --class=UrlSeeder
-Set Up Environment Variables
-
-Update the .env file on your server with production settings.
-
-
-Running the Application
+## Running the Application
+Local Development
 Start the Laravel Development Server
 
-bash
-Copiar código
+```bash
 php artisan serve
-Your application will be available at http://localhost:8000.
+```
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Summary
-Prerequisites: Lists required software.
-Installation: Steps to set up the project.
-Configuration: How to configure the environment.
-Running the Application: How to start the local server.
-Database Migration and Seeding: Instructions for running migrations and seeding data.
-Deployment: Basic steps for deploying the application.
-This README provides a straightforward guide to getting your Laravel application up and running, including setup and deployment steps.
+The Laravel application will be available at http://localhost:8000.

@@ -19,7 +19,8 @@ Route::get('/', [UrlController::class, 'index']);
 Route::get('/create', [UrlController::class, 'create'])->name('url.create');
 Route::post('/shorten', [UrlController::class, 'store'])->name('url.store');
 Route::delete('/urls/{id}', [UrlController::class, 'destroy'])->name('urls.destroy');
-Route::middleware(['cache.response'])->group(function () {
+/* Route::middleware(['cache.response'])->group(function () {
     Route::get('/{shortened}', [UrlController::class, 'show']);
 });
-
+ */
+Route::get('/redirect/{shortened}', [UrlController::class, 'show'])->name('url.redirect');

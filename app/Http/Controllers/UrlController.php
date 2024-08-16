@@ -44,6 +44,7 @@ class UrlController extends Controller
    
     public function show($shortened)
     {
+        
         $url = Url::where('shortened_url', $shortened)->firstOrFail();
         $original = $url->original_url;
         return view('countdown', compact('original'));

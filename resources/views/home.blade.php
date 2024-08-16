@@ -42,7 +42,7 @@
                                 <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
                             </form>
 
-                            <a href="{{ url( $url->shortened_url ) }}" class="btn btn-secondary btn-sm">Go</a>
+                            <a href="{{ url( 'redirect/' . $url->shortened_url ) }}" class="btn btn-secondary btn-sm">Go</a>
                         </td>
                     </tr>
                     @endforeach
